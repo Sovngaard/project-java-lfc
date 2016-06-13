@@ -31,7 +31,7 @@ public class Controller implements IController {
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * (non-Javadoc) test
 	 * 
 	 * @see contract.IController#control()
 	 */
