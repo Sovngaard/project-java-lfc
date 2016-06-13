@@ -47,6 +47,8 @@ public class View implements IView, Runnable {
 				return ControllerOrder.Deutsch;
 			case KeyEvent.VK_I:
 				return ControllerOrder.Indonesia;
+			case KeyEvent.VK_M:
+				return ControllerOrder.Magreb;
 			default:
 				return ControllerOrder.English;
 		}
