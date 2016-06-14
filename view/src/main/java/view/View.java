@@ -59,9 +59,9 @@ public class View implements IView, Runnable {
 	 *
 	 * @see contract.IView#printMessage(java.lang.String)
 	 */
-	public void printMessage(final String message) {
-		this.viewFrame.printMessage(message);
-	}
+	//public void printMessage(final String message) {
+		//this.viewFrame.printMessage(message);
+	//}
 
 	/*
 	 * (non-Javadoc)
@@ -80,5 +80,10 @@ public class View implements IView, Runnable {
 	 */
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
+	}
+
+	public void printMessage(String message) {
+		// TODO Auto-generated method stub
+		
 	}
 }
