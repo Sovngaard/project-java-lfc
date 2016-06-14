@@ -7,11 +7,11 @@ package contract;
  */
 public enum ControllerOrder {
 
-	/** The English. */
-	English, /** The French. */
-	Francais, /** The Deutch. */
-	Deutsch, /** The Indonesia. */
-	Indonesia,
-	Magreb
+	
+	LEVEL1, /** 1er level */
+	LEVEL2, /** 2eme level */
+	LEVEL3, /** 3eme level */
+	LEVEL4, /** 4eme level */
+	LEVEL5 /** 5eme level */
 	
 }

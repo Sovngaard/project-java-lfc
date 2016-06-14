@@ -82,6 +82,7 @@ class ViewPanel extends JPanel implements Observer {
             e.printStackTrace();
       }
 		
+		
 	}
 	
 }
