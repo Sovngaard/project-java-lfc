@@ -1,4 +1,4 @@
-package motionless.decor;
+ackage motionless.decor;
 
 public class Bone {
 
