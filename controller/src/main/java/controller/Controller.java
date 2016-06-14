@@ -36,7 +36,7 @@ public class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Push keys 'E', 'F', 'D' or 'I' to choose a level from 1 to 5");
+		this.view.printMessage("Push keys 'E', 'F', 'D','I' or 'M' to choose a level from 1 to 5");
 	}
 
 	/**
