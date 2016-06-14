@@ -68,7 +68,7 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-		graphics.setColor(Color.BLACK);
+		graphics.setColor(Color.WHITE);
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
 		graphics.setColor(Color.red);
@@ -76,7 +76,7 @@ class ViewPanel extends JPanel implements Observer {
 		try {
             graphics.drawImage(ImageIO.read(new File("sprite/lorann_l.png")), 0, 0, this.getViewFrame());
                   } catch (IOException e) {
-            e.printStackTrace(); //lol
+            e.printStackTrace();
       }
 		
 	}
