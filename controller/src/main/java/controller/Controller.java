@@ -67,7 +67,8 @@ public class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case LEVEL1:
-				this.model.loadMessage("1");
+				this.model.loadMessage("AA");
+				this.model.loadMessage("AB");
 				break;
 			case LEVEL2:
 				this.model.loadMessage("2");
