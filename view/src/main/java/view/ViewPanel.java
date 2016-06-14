@@ -76,7 +76,7 @@ class ViewPanel extends JPanel implements Observer {
 		try {
             graphics.drawImage(ImageIO.read(new File("sprite/lorann_l.png")), 0, 0, this.getViewFrame());
                   } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //lol
       }
 		
 	}
