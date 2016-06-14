@@ -81,6 +81,17 @@ class ViewPanel extends JPanel implements Observer {
                   } catch (IOException e) {
             e.printStackTrace(); //lol
       }
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
 		
 	}
 	
