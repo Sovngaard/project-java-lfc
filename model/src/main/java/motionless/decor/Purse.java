@@ -1,4 +1,4 @@
-package model;
+package motionless.decor;
 
 public class Purse {
 
