@@ -55,7 +55,7 @@ public class View implements IView, Runnable {
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * (non-Javadoc) ed
 	 *
 	 * @see contract.IView#printMessage(java.lang.String)
 	 */
