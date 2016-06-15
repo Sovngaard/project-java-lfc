@@ -19,4 +19,4 @@ public abstract class MotionlessElements {
 		}
 		return LAND;
 	}
-}
+}//
