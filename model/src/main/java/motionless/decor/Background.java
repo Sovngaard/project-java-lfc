@@ -5,9 +5,9 @@ import ele.element.Sprite;
 import ele.element.Permeability;
 
 
-class Vbone extends MotionlessElement {
+class Background extends MotionlessElement {
 
-	public Vbone(Sprite sprite, Permeability permeability, int i) {
+	public Background(Sprite sprite, Permeability permeability, int i) {
 		super(new Sprite("horizontal_bone.jpg"), Permeability.BLOCKING, '!');
 		// TODO Auto-generated constructor stub
 	}
