@@ -73,6 +73,26 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
 		graphics.setColor(Color.red);
 		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
+		
+		for(int y = 0; y < 12; y++)
+        {
+     for(int x = 0; x < 20; x++)
+                        {
+                                       
+          Object cpt;
+		try {
+                                                      
+           graphics.drawImage(getViewFrame().getModel().sld(cpt), x*64, y*64, 64, 64, this.getViewFrame());
+              } catch (IOException e) {
+                 // TODO Auto-generated catch block
+                      e.printStackTrace();
+                                       
+                  }cpt++;
+                                       
+                        }
+     }
+        }
+
 		//try {
             //graphics.drawImage(ImageIO.read(new File("sprite/bone.png")), 205, 7, this.getViewFrame());
             //graphics.drawImage(ImageIO.read(new File("sprite/horizontal_bone.png")), 238, 7, this.getViewFrame());
@@ -83,7 +103,7 @@ class ViewPanel extends JPanel implements Observer {
       }
 		
 		
-	}
+	
 //}
 		
 

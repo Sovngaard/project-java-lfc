@@ -1,7 +1,12 @@
 package model;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
+
+import javax.imageio.ImageIO;
 
 import contract.IModel;
 
@@ -14,6 +19,8 @@ public class Model extends Observable implements IModel {
 
 	/** The message. */
 	private String message;
+	private Image img;
+	private  char ch[];
 
 	/**
 	 * Instantiates a new model.
@@ -65,4 +72,21 @@ public class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
+	
+	public Image pik(int cpt) throws IOException{
+	 ch = message.toCharArray();
+		switch (ch[cpt]) {
+
+		case 'X' : 
+			img = ImageIO.read(new File("sprite/lorann_l.png"));
+		break;
+		
+		
+	}
+		return img;
 }
+
+	public Image sld(Object cpt) {
+		// TODO Auto-generated method stub
+		return null;
+	}}
