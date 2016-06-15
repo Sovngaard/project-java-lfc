@@ -34,6 +34,6 @@ public interface IModel {
 	Observable getObservable();
 	Image pik(int cpt) throws IOException;
 
-	Image sld(Object cpt);
+	
 
 }
