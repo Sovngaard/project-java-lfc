@@ -74,12 +74,32 @@ public class Model extends Observable implements IModel {
 	}
 	
 	public Image pik(int cpt) throws IOException{
-	 ch = message.toCharArray();
-		switch ('X') {
+		
+		switch (cpt) {
 
 		case 'X' : 
 			img = ImageIO.read(new File("sprite/lorann_l.png"));
-		break;
+			break;
+		case '1' :
+			img = ImageIO.read(new File("sprite/Background.png"));
+			break;
+		case 'B' :
+			img = ImageIO.read(new File("sprite/crystal_ball.png"));
+			break;
+		case '!' :
+			img = ImageIO.read(new File("sprite/horizontal_bone.png"));
+			break;
+		case '-' :
+			img = ImageIO.read(new File("sprite/vertical_bone.png"));
+			break;
+		case 'P' : 
+			img = ImageIO.read(new File("sprite/purse.png"));
+			break;
+		case 'C' :
+			img = ImageIO.read(new File("sprite/gate_closed.png"));
+			break;
+		default :
+			img = ImageIO.read(new File("sprite/lorann_l.png"));
 		
 		
 	}
