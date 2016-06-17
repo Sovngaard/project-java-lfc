@@ -8,7 +8,7 @@ import ele.element.Permeability;
 class Gatec extends MotionlessElement {
 
 	public Gatec(Sprite sprite, Permeability permeability, int i) {
-		super(new Sprite("horizontal_bone.jpg"), Permeability.BLOCKING, '!');
+		super(new Sprite("gate_closed.png"), Permeability.BLOCKING, '!');
 		// TODO Auto-generated constructor stub
 	}
 

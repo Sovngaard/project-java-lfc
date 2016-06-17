@@ -8,7 +8,7 @@ import ele.element.Permeability;
 class Vbone extends MotionlessElement {
 
 	public Vbone(Sprite sprite, Permeability permeability, int i) {
-		super(new Sprite("horizontal_bone.jpg"), Permeability.BLOCKING, '!');
+		super(new Sprite("vertical_bone.png"), Permeability.BLOCKING, '!');
 		// TODO Auto-generated constructor stub
 	}
 
