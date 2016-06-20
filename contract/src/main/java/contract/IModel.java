@@ -9,7 +9,7 @@ import java.util.Observable;
  *
  * @author Jean-Aymeric Diet
  */
-public interface IModel {
+public interface IModel {//
 
 	/**
 	 * Gets the message.
