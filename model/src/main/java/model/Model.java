@@ -5,10 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
-
 import javax.imageio.ImageIO;
-
 import contract.IModel;
+
 
 /**
  * The Class Model.
@@ -19,14 +18,27 @@ public class Model extends Observable implements IModel {
 
 	/** The message. */
 	private String message;
-	private Image img;
-	private  char ch[];
+	private int compteur =0;
+	private Image image = null;
+	private Lorann hero;
+	private char[] ch =null;
+	private int cpt = 0;
+	private Fixe[][] fixe = new Fixe[20][12];
+	private Image ima =null;
+	private int x;
+	private int y;
+	public static int level =1;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
 		this.message = "";
+		loadMessage(""+level);
+		initHero();
+		System.out.println("héro a été init");
+		initFixe();
+		System.out.println("elements fixes OK");
 	}
 
 	/*
@@ -72,44 +84,269 @@ public class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
-	
-	public Image pik(int cpt) throws IOException{
-		
-		switch (cpt) {
 
-		case 'X' : 
-			img = ImageIO.read(new File("sprite/lorann_l.png"));
-			break;
-		case '1' :
-			img = ImageIO.read(new File("sprite/Background.png"));
-			break;
-		case 'B' :
-			img = ImageIO.read(new File("sprite/bone.png"));
-			break;
-		case '!' :
-			img = ImageIO.read(new File("sprite/horizontal_bone.png"));
-			break;
-		case '-' :
-			img = ImageIO.read(new File("sprite/vertical_bone.png"));
-			break;
-		case 'P' : 
-			img = ImageIO.read(new File("sprite/purse.png"));
-			break;
-		case 'C' :
-			img = ImageIO.read(new File("sprite/gate_closed.png"));
-			break;
-		case 'S' :
-			img = ImageIO.read(new File("sprite/Crystal_ball.png	"));
-			break;
-		default :
-			img = ImageIO.read(new File("sprite/lorann_l.png"));
-		
+	
+	public void cpt(int i)
+	{
+		compteur  = compteur+i;
+		System.out.println("cpt :" + compteur);
 		
 	}
-		return img;
-}
 
-	public Image sld(Object cpt) {
+	public void initHero()
+	{
+		try {
+			  image = ImageIO.read(new File("sprite/lorann_l.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		hero = new Lorann(1,1,image);		
+	}
+	public void initFixe()
+	{	
+		fixe = new Fixe[20][12];
+	System.out.println("element fixe reset");
+	 	ch =null;
+		System.out.println("obj init fixe");
+		cpt = 0;
+		
+		 ch = message.toCharArray();
+		 System.out.println("ch init");
+		 System.out.println(ch[0]);
+		
+	for(y=0 ; y <= 11 ;y++)
+	{//System.out.println("for y init");
+		 for(x=0 ; x <=19 ; x++)
+		 { 	
+			 
+			 switch(ch[cpt])
+			 {
+			 case 'S' :
+				 try {
+					image = ImageIO.read(new File("sprite/Sortilege.png"));					
+				 	} catch (IOException e) {e.printStackTrace();}		
+				 	fixe[x][y] = new Fixe(x,y,image, false, false, 25);
+				 	fixe[x][y].setPenetrableOFF();
+				 break;
+				 
+			 case 'X' :
+				 try {
+					image = ImageIO.read(new File("sprite/gate_closed.png"));						
+					} catch (IOException e) {e.printStackTrace();}
+				 	fixe[x][y] = new Fixe(x,y,image, false, false, 1);
+				 	
+				 break;
+			 case '|' :
+				 
+				 try {
+					image = ImageIO.read(new File("sprite/vertical_bone.png"));						
+					} catch (IOException e) {e.printStackTrace();}
+				 	fixe[x][y] = new Fixe(x,y,image,false,false,2);
+				 	
+				 	
+				 break;
+				 
+			 case '-' :			
+				 try{
+				 	image = ImageIO.read(new File("sprite/horizontal_bone.png"));					
+					} catch (IOException e) {e.printStackTrace();}				
+					fixe[x][y] = new Fixe(x,y,image, false, false, 3);		
+					
+				 break;
+				 
+			 case 'c' :
+				
+				 	try{
+				 	image = ImageIO.read(new File("sprite/bone.png"));					
+					} catch (IOException e) {e.printStackTrace();}	
+					fixe[x][y] = new Fixe(x,y,image,false,false,4);
+					
+					
+				 break;
+				 
+			 
+			 case ':' :
+				 try{
+				 	image = ImageIO.read(new File("sprite/NoSprite.png"));					
+					} catch (IOException e) {e.printStackTrace();}				
+					fixe[x][y] = new Fixe(x,y,image,true,false,5);
+					
+				 break;
+			 case'O':
+				 try{
+					 	image = ImageIO.read(new File("sprite/crystal_ball.png"));					
+						} catch (IOException e) {e.printStackTrace();}				
+						fixe[x][y] = new Fixe(x,y,image,true,true,6);
+						
+						break;
+			 case'U': 
+				 
+				 hero.ResetX(x);
+				 hero.ResetY(y);
+			 default :
+				 try{
+					 	image = ImageIO.read(new File("sprite/NoSprite.png"));					
+						} catch (IOException e) {e.printStackTrace();}				
+						fixe[x][y] = new Fixe(x,y,image,true,false,5);
+						
+					 break;		 
+			 		}cpt++;
+			 
+	 }
+	 }
+}
+	
+	
+	
+	public int HerogetX()
+	{	int x = hero.getX();
+		return x;
+	}
+	public int HerogetY()
+	{
+		int y = hero.getY();
+		return y;
+	}
+	public Image HerogetImage()
+	{	
+		Image ima = hero.getImg();
+		return ima;
+	}
+	public void HerosetX(int i)
+	{	hero.setX(i);
+		
+	}
+	public void HerosetY(int i)
+	{
+		hero.setY(i);
+		
+	}
+	public void HerosetImage(Image img)
+	{
+		hero.setImg(img);
+	}
+	public Image FixegetImage(int x, int y)
+	{
+		ima =fixe[x][y].getImg();
+		return ima;
+	}
+	public boolean FixegetPenetrable(int x,int y)
+	{
+		boolean Penetrable = this.fixe[x][y].getPenetrable();
+		return Penetrable;
+	}
+	public boolean FixegetPickable(int x,int y) {
+		return fixe[x][y].Pickable();
+	}
+	public void FixedisableSprite(int x,int y)
+	{
+		int id =fixe[x][y].disableSprite();
+		ElementChangeState(id);
+	}
+	public void ElementChangeState(int id)
+	{
+		switch(id) 
+		{
+		case 1:
+			level++;
+			loadMessage(""+level);
+			initFixe();
+		case 6:
+			for(y=0;y<=11;y++)
+			{
+				for(x=0;x<=19;x++)
+				{
+					if (fixe[x][y].getid() == 1)
+					{
+						fixe[x][y].changeState();
+					}
+				}
+			}
+			break;
+			}
+
+	}
+	public void MoveUp()
+	{Image img = null;
+		if(ElementFixegetPenetrable(HerogetX(), HerogetY()-1) ==true)
+		{if(ElementFixegetRecuperable(HerogetX(), HerogetY()-1) == true)
+		{
+			ElementFixedisableSprite(HerogetX(), HerogetY()-1);
+		}
+		HerosetY(-1);
+		
+		try { img =ImageIO.read(new File("sprite/lorann_u.png"));
+		} catch (IOException e) {e.printStackTrace();}
+			HerosetImage(img);
+		}
+	}
+	public void MoveRight()
+	{
+		Image img = null;
+		if(ElementFixegetPenetrable(HerogetX()+1, HerogetY()) ==true)
+		{if(ElementFixegetRecuperable(HerogetX()+1, HerogetY()) == true)
+		{
+			ElementFixedisableSprite(HerogetX()+1, HerogetY());
+		}
+		HerosetX(1);
+		
+		try { img =ImageIO.read(new File("sprite/lorann_r.png"));
+		} catch (IOException e) {e.printStackTrace();}
+			HerosetImage(img);
+		}
+	}
+	public void MoveLeft()
+	{
+		Image img = null;
+		if(ElementFixegetPenetrable(HerogetX()-1, HerogetY()) ==true)
+		{if(ElementFixegetRecuperable(HerogetX()-1, HerogetY()) == true)
+		{
+			ElementFixedisableSprite(HerogetX()-1, HerogetY());
+		}
+		HerosetX(-1);
+		
+		try { img =ImageIO.read(new File("sprite/lorann_l.png"));
+		} catch (IOException e) {e.printStackTrace();}
+			HerosetImage(img);
+		}
+	}	
+	public void MoveDown()
+	{
+		Image img = null;
+		if(ElementFixegetPenetrable(HerogetX(), HerogetY()+1) ==true)
+		{if(ElementFixegetRecuperable(HerogetX(), HerogetY()+1) == true)
+		{
+			ElementFixedisableSprite(HerogetX(), HerogetY()+1);
+		}
+		HerosetY(1);
+		
+		try { img =ImageIO.read(new File("sprite/lorann_b.png"));
+		} catch (IOException e) {e.printStackTrace();}
+			HerosetImage(img);
+		}
+	}
+
+	public Image ElementFixegetImage(int x, int y) {
 		// TODO Auto-generated method stub
 		return null;
-	}}
+	}
+
+	public boolean ElementFixegetPenetrable(int x, int y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean ElementFixegetRecuperable(int x, int y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void ElementFixedisableSprite(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+
+}
