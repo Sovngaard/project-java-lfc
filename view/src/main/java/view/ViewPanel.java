@@ -1,15 +1,9 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.io.File;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-//extend model.Model;
-
 
 /**
  * The Class ViewPanel.
@@ -22,7 +16,7 @@ class ViewPanel extends JPanel implements Observer {
 	private ViewFrame					viewFrame;
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
-    public int i= 2;
+
 	/**
 	 * Instantiates a new view panel.
 	 *
@@ -69,33 +63,17 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
-
-		int cpt = 0;
-	
-		graphics.setColor(Color.BLACK);
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.setColor(Color.red);
 		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
-		String message = "11111111111111111111111111B!B!!!!!!!!!B1111B!!B1-111111111BB111-1111-1111111111-B!!B1111-11P1111111--1P1B!!!B!!!!!!B111B-P11P1111111S1111X1C-1P1B!!!B!!!!!!B111BB!!B1111-11P1111111-111-1111-1111111111-111B!!B1-111111111BB111111B!B!!!!!!!!!B111111111111111111111";
-		char ch[] = message.toCharArray();
-		
-		
-		for(int y = 0; y < 12; y++)
-        {
-			for(int x = 0; x < 20; x++)
-            {
-				try {
-					graphics.drawImage(getViewFrame().getModel().pik(ch[cpt]), x*64, y*64, 64, 64, this.getViewFrame());
-
-                 // TODO Auto-generated catch block 
-
-                    } catch (IOException e) {
-                        	e.printStackTrace();
-                    }
-				cpt++; 
-                        
-            }
-        }}
-}	
-
+		//graphics.drawImage(this.getViewFrame().getModel().HerogetImage(), this.getViewFrame().getModel().HerogetX()*64, this.getViewFrame().getModel().HerogetY()*64, 64, 64, viewFrame);
+	
+	for(int y=0 ; y<12 ; y++)
+	{
+		for(int x=0; x<20 ; x++)
+		{
+			graphics.drawImage(this.getViewFrame().getModel().ElementFixegetImage(x, y), x*64, y*64, 64, 64, viewFrame);
+		}
+	}
+	graphics.drawImage(this.getViewFrame().getModel().HerogetImage(), this.getViewFrame().getModel().HerogetX()*64, this.getViewFrame().getModel().HerogetY()*64, 64, 64, viewFrame);
+	} 
+}

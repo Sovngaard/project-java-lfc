@@ -345,6 +345,26 @@ public class Model extends Observable implements IModel {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Image ElementFixegetImage(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean ElementFixegetPenetrable(int x, int y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean ElementFixegetRecuperable(int x, int y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void ElementFixedisableSprite(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 
