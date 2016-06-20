@@ -1,13 +1,11 @@
 package ele.element;
 
 import java.awt.Image;
-//import aedt.showboard.ISquare;
 
-public abstract class Element //implements ISquare 
+public abstract class Element
 {
 	private Sprite				sprite;
 	private Permeability	permeability;
-	//private NettleWorld		nettleWorld;
 
 	public Element(final Sprite sprite, final Permeability permeability) {
 		this.setSprite(sprite);
@@ -30,15 +28,6 @@ public abstract class Element //implements ISquare
 		this.permeability = permeability;
 	}
 
-	//public NettleWorld getNettleWorld() {
-		//return this.nettleWorld;
-	//}
-
-	//public void setNettleWorld(final NettleWorld nettleWorld) {
-		//this.nettleWorld = nettleWorld;
-	//}
-
-	//@Override
 	public Image getImage() {
 		return this.getSprite().getImage();
 	}
