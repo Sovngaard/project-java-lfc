@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Lorann implements Runnable {
+public class Lorann  {
 	private int x;//les positions
 	private int y;
 	private Image img; //variable pour l image de lorann
@@ -52,7 +52,7 @@ public class Lorann implements Runnable {
 		this.y =  y;
 	}
 
-	public void run() {
+	/*public void run() {
 		try {
 			setImg(ImageIO.read(new File("sprite/lorann_ur.png")));// images lorann left up
 			
@@ -67,9 +67,9 @@ public class Lorann implements Runnable {
 		} catch (IOException e1) {e1.printStackTrace();}
 		
 		}
-		
+		*/
 		
 	}
 	
 
-}
+

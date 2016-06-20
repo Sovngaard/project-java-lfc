@@ -34,7 +34,7 @@ public class Model extends Observable implements IModel {
 	public Model() {
 		this.message = "";
 		loadMessage(""+level);
-		initHero();
+		initLorann();
 		System.out.println("Hero OK");
 		initElementFixe();
 		System.out.println("Elements fixes OK");
@@ -92,10 +92,10 @@ public class Model extends Observable implements IModel {
 		
 	}
 
-	public void initHero()
+	public void initLorann()
 	{
 		try {
-			  image = ImageIO.read(new File("sprite/lorann_u.png"));
+			  image = ImageIO.read(new File("sprite/lorann_l.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -147,7 +147,8 @@ public class Model extends Observable implements IModel {
 				 	
 				 break;
 				 
-			 case '!' :			
+			 case '!' :	
+				
 				 try{
 				 	image = ImageIO.read(new File("sprite/horizontal_bone.png"));					
 					} catch (IOException e) {e.printStackTrace();}				
@@ -156,9 +157,9 @@ public class Model extends Observable implements IModel {
 				 break;
 				 
 			 case 'V' :
-				
+					
 				 	try{
-				 	image = ImageIO.read(new File("sprite/bone_.png"));					
+				 	image = ImageIO.read(new File("sprite/bone.png"));					
 					} catch (IOException e) {e.printStackTrace();}	
 					elementfixe[x][y] = new ElementFixe(x,y,image,false,false,4);
 					
@@ -167,6 +168,7 @@ public class Model extends Observable implements IModel {
 				 
 			 
 			 case '1' :
+				 //System.out.println("test");
 				 try{
 				 	image = ImageIO.read(new File("sprite/NoSprite.png"));					
 					} catch (IOException e) {e.printStackTrace();}				
@@ -174,6 +176,7 @@ public class Model extends Observable implements IModel {
 					
 				 break;
 			 case'P':
+				
 				 try{
 					 	image = ImageIO.read(new File("sprite/crystal_ball.png"));					
 						} catch (IOException e) {e.printStackTrace();}				
@@ -184,7 +187,7 @@ public class Model extends Observable implements IModel {
 				 
 				 lorann.ResetX(x);
 				 lorann.ResetY(y);
-			 default :
+			 default : 
 				 try{
 					 	image = ImageIO.read(new File("sprite/NoSprite.png"));					
 						} catch (IOException e) {e.printStackTrace();}				

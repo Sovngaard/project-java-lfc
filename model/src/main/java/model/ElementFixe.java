@@ -21,6 +21,7 @@ public class ElementFixe {
 		this.img = img;
 		this.Penetrable = Penetrable;
 		this.Recuperable = Recuperable;
+		//System.out.println(img);
 		
 	}
 	
@@ -92,7 +93,6 @@ public class ElementFixe {
 			try {
 				this.img = ImageIO.read(new File("sprite/gate_open.png"));
 			} catch (IOException e) {e.printStackTrace();}
-			//setImg(img);
 			setPenetrableON();
 			setRecuperableON();
 		break;
