@@ -36,12 +36,12 @@ public interface IModel {//
 
 	void cpt(int i);
 
-	int HerogetX();
-	int HerogetY();
+	int LoranngetX();
+	int LoranngetY();
 	Image HerogetImage();
-	void HerosetX(int x);
-	void HerosetY(int y);
-	void HerosetImage(Image img);
+	void LorannsetX(int x);
+	void LorannsetY(int y);
+	void LorannsetImage(Image img);
 	Image ElementFixegetImage(int x, int y);
 	boolean ElementFixegetPenetrable(int x,int y);
 	boolean ElementFixegetRecuperable(int x,int y);
@@ -50,6 +50,9 @@ public interface IModel {//
 	void MoveLeft();
 	void MoveUp();
 	void MoveDown();
+
+	Image LoranngetImage();
+
 	
 
 }

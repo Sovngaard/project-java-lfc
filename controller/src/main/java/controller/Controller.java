@@ -101,7 +101,7 @@ public class Controller implements IController {
 		default:
 			try {img =ImageIO.read(new File("sprite/lorann_l.png"));//lire le sprite de lorann
 			} catch (IOException e) {e.printStackTrace();}
-				this.model.HerosetImage(img);//initialise l'image de LORANN
+				this.model.LorannsetImage(img);//initialise l'image de LORANN
 				this.view.ReUpdate();//update sprite lorann
 			break;
 		}

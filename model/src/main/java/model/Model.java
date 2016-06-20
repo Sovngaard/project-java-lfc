@@ -8,7 +8,6 @@ import java.util.Observable;
 import javax.imageio.ImageIO;
 import contract.IModel;
 
-
 /**
  * The Class Model.
  *
@@ -20,14 +19,14 @@ public class Model extends Observable implements IModel {
 	private String message;
 	private int compteur =0;
 	private Image image = null;
-	private Lorann hero;
+	private Lorann lorann;
 	private char[] ch =null;
 	private int cpt = 0;
-	private Fixe[][] fixe = new Fixe[20][12];//elements fixes sur la grille
+	private ElementFixe[][] elementfixe = new ElementFixe[20][12];
 	private Image ima =null;
 	private int x;
 	private int y;
-	public static int level =1;//debut level 1
+	public static int level =1;
 
 	/**
 	 * Instantiates a new model.
@@ -36,9 +35,9 @@ public class Model extends Observable implements IModel {
 		this.message = "";
 		loadMessage(""+level);
 		initHero();
-		System.out.println("héro a été init");//msg erreur
-		initFixe();
-		System.out.println("elements fixes OK");
+		System.out.println("Hero OK");
+		initElementFixe();
+		System.out.println("Elements fixes OK");
 	}
 
 	/*
@@ -59,7 +58,7 @@ public class Model extends Observable implements IModel {
 	private void setMessage(final String message) {
 		this.message = message;
 		this.setChanged();
-		this.notifyObservers();//utilisation observeurs
+		this.notifyObservers();
 	}
 
 	/*
@@ -93,24 +92,26 @@ public class Model extends Observable implements IModel {
 		
 	}
 
-	public void initHero()//init lorann
+	public void initHero()
 	{
 		try {
-			  image = ImageIO.read(new File("sprite/lorann_l.png"));
+			  image = ImageIO.read(new File("sprite/lorann_u.png"));
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		hero = new Lorann(1,1,image);		
+		lorann = new Lorann(1,1,image);		
 	}
-	public void initFixe()
+	public void initElementFixe()
 	{	
-		fixe = new Fixe[20][12];//elements fixes
-	System.out.println("element fixe reset");//msg erreurs
+		elementfixe = new ElementFixe[20][12];
+	System.out.println("element fixe reset");
 	 	ch =null;
-		System.out.println("obj init fixe");
+		System.out.println("objets fixes init");
 		cpt = 0;
 		
 		 ch = message.toCharArray();
+		 System.out.println(message);
 		 System.out.println("ch init");
 		 System.out.println(ch[0]);
 		
@@ -121,73 +122,73 @@ public class Model extends Observable implements IModel {
 			 
 			 switch(ch[cpt])
 			 {
-			 case 'S' :
-				 try {
-					image = ImageIO.read(new File("sprite/Sortilege.png"));					
-				 	} catch (IOException e) {e.printStackTrace();}		
-				 	fixe[x][y] = new Fixe(x,y,image, false, false, 25);
-				 	fixe[x][y].setPenetrableOFF();//dit si un élément fixe peut etre penetré ou pas
-				 break;
+			// case 'S' :
+			//	 try {
+			//		image = ImageIO.read(new File("sprite/Sortilege.png"));					
+			//	 	} catch (IOException e) {e.printStackTrace();}		
+			//	 	elementfixe[x][y] = new ElementFixe(x,y,image, false, false, 25);
+			//	 	elementfixe[x][y].setPenetrableOFF();
+			//	 break;
 				 
-			 case 'X' :
+			 case 'C' :
 				 try {
 					image = ImageIO.read(new File("sprite/gate_closed.png"));						
 					} catch (IOException e) {e.printStackTrace();}
-				 	fixe[x][y] = new Fixe(x,y,image, false, false, 1);
+				 	elementfixe[x][y] = new ElementFixe(x,y,image, false, false, 1);
 				 	
 				 break;
-			 case '|' :
+			 case '-' :
 				 
 				 try {
 					image = ImageIO.read(new File("sprite/vertical_bone.png"));						
 					} catch (IOException e) {e.printStackTrace();}
-				 	fixe[x][y] = new Fixe(x,y,image,false,false,2);
+				 	elementfixe[x][y] = new ElementFixe(x,y,image,false,false,2);
 				 	
 				 	
 				 break;
 				 
-			 case '-' :			
+			 case '!' :			
 				 try{
 				 	image = ImageIO.read(new File("sprite/horizontal_bone.png"));					
 					} catch (IOException e) {e.printStackTrace();}				
-					fixe[x][y] = new Fixe(x,y,image, false, false, 3);		
+					elementfixe[x][y] = new ElementFixe(x,y,image, false, false, 3);		
 					
 				 break;
 				 
-			 case 'c' :
+			 case 'V' :
 				
 				 	try{
-				 	image = ImageIO.read(new File("sprite/bone.png"));					
+				 	image = ImageIO.read(new File("sprite/bone_.png"));					
 					} catch (IOException e) {e.printStackTrace();}	
-					fixe[x][y] = new Fixe(x,y,image,false,false,4);
+					elementfixe[x][y] = new ElementFixe(x,y,image,false,false,4);
 					
 					
 				 break;
 				 
 			 
-			 case ':' :
+			 case '1' :
 				 try{
 				 	image = ImageIO.read(new File("sprite/NoSprite.png"));					
 					} catch (IOException e) {e.printStackTrace();}				
-					fixe[x][y] = new Fixe(x,y,image,true,false,5);
+					elementfixe[x][y] = new ElementFixe(x,y,image,true,false,5);
 					
 				 break;
-			 case'O':
+			 case'P':
 				 try{
 					 	image = ImageIO.read(new File("sprite/crystal_ball.png"));					
 						} catch (IOException e) {e.printStackTrace();}				
-						fixe[x][y] = new Fixe(x,y,image,true,true,6);
+						elementfixe[x][y] = new ElementFixe(x,y,image,true,true,6);
 						
 						break;
-			 case'U': 
+			 case'X': 
 				 
-				 hero.ResetX(x);
-				 hero.ResetY(y);
+				 lorann.ResetX(x);
+				 lorann.ResetY(y);
 			 default :
 				 try{
 					 	image = ImageIO.read(new File("sprite/NoSprite.png"));					
 						} catch (IOException e) {e.printStackTrace();}				
-						fixe[x][y] = new Fixe(x,y,image,true,false,5);
+						elementfixe[x][y] = new ElementFixe(x,y,image,true,false,5);
 						
 					 break;		 
 			 		}cpt++;
@@ -196,51 +197,59 @@ public class Model extends Observable implements IModel {
 	 }
 }
 	
+		 
+ 
 	
 	
-	public int HerogetX()//les coordonées du héros
-	{	int x = hero.getX();
+	
+	
+	
+	
+	
+	
+	public int LoranngetX()
+	{	int x = lorann.getX();
 		return x;
 	}
-	public int HerogetY()
+	public int LoranngetY()
 	{
-		int y = hero.getY();
+		int y = lorann.getY();
 		return y;
 	}
-	public Image HerogetImage()
+	public Image LoranngetImage()
 	{	
-		Image ima = hero.getImg();
+		Image ima = lorann.getImg();
 		return ima;
 	}
-	public void HerosetX(int i)
-	{	hero.setX(i);
+	public void LorannsetX(int i)
+	{	lorann.setX(i);
 		
 	}
-	public void HerosetY(int i)
+	public void LorannsetY(int i)
 	{
-		hero.setY(i);
+		lorann.setY(i);
 		
 	}
-	public void HerosetImage(Image img)
+	public void LorannetImage(Image img)
 	{
-		hero.setImg(img);
+		lorann.setImg(img);
 	}
-	public Image FixegetImage(int x, int y)
+	public Image ElementFixegetImage(int x, int y)
 	{
-		ima =fixe[x][y].getImg();
+		ima =elementfixe[x][y].getImg();
 		return ima;
 	}
-	public boolean FixegetPenetrable(int x,int y)
+	public boolean ElementFixegetPenetrable(int x,int y)
 	{
-		boolean Penetrable = this.fixe[x][y].getPenetrable();
+		boolean Penetrable = this.elementfixe[x][y].getPenetrable();
 		return Penetrable;
 	}
-	public boolean FixegetPickable(int x,int y) {
-		return fixe[x][y].Pickable();
+	public boolean ElementFixegetRecuperable(int x,int y) {
+		return elementfixe[x][y].getRecuperable();
 	}
-	public void FixedisableSprite(int x,int y)
+	public void ElementFixedisableSprite(int x,int y)
 	{
-		int id =fixe[x][y].disableSprite();
+		int id =elementfixe[x][y].disableSprite();
 		ElementChangeState(id);
 	}
 	public void ElementChangeState(int id)
@@ -249,16 +258,16 @@ public class Model extends Observable implements IModel {
 		{
 		case 1:
 			level++;
-			loadMessage(""+level);//chargement du level
-			initFixe();
+			loadMessage(""+level);
+			initElementFixe();
 		case 6:
 			for(y=0;y<=11;y++)
 			{
 				for(x=0;x<=19;x++)
 				{
-					if (fixe[x][y].getid() == 1)
+					if (elementfixe[x][y].getid() == 1)
 					{
-						fixe[x][y].changeState();//change etat
+						elementfixe[x][y].changeState();
 					}
 				}
 			}
@@ -268,100 +277,70 @@ public class Model extends Observable implements IModel {
 	}
 	public void MoveUp()
 	{Image img = null;
-		if(FixegetPenetrable(HerogetX(), HerogetY()-1) ==true)
-		{if(FixegetPickable(HerogetX(), HerogetY()-1) == true)
+		if(ElementFixegetPenetrable(LoranngetX(), LoranngetY()-1) ==true)
+		{if(ElementFixegetRecuperable(LoranngetX(), LoranngetY()-1) == true)
 		{
-			FixedisableSprite(HerogetX(), HerogetY()-1);
+			ElementFixedisableSprite(LoranngetX(), LoranngetY()-1);
 		}
-		HerosetY(-1);
+		LorannsetY(-1);
 		
-		try { img =ImageIO.read(new File("sprite/lorann_u.png"));
+		try { img =ImageIO.read(new File("sprite/lorann_UP.png"));
 		} catch (IOException e) {e.printStackTrace();}
-			HerosetImage(img);
+			LorannsetImage(img);
 		}
 	}
 	public void MoveRight()
 	{
 		Image img = null;
-		if(FixegetPenetrable(HerogetX()+1, HerogetY()) ==true)
-		{if(FixegetPickable(HerogetX()+1, HerogetY()) == true)
+		if(ElementFixegetPenetrable(LoranngetX()+1, LoranngetY()) ==true)
+		{if(ElementFixegetRecuperable(LoranngetX()+1, LoranngetY()) == true)
 		{
-			ElementFixedisableSprite(HerogetX()+1, HerogetY());
+			ElementFixedisableSprite(LoranngetX()+1, LoranngetY());
 		}
-		HerosetX(1);
+		LorannsetX(1);
 		
-		try { img =ImageIO.read(new File("sprite/lorann_r.png"));
+		try { img =ImageIO.read(new File("sprite/lorann_RIGHT.png"));
 		} catch (IOException e) {e.printStackTrace();}
-			HerosetImage(img);
+			LorannsetImage(img);
 		}
 	}
 	public void MoveLeft()
 	{
 		Image img = null;
-		if(FixegetPenetrable(HerogetX()-1, HerogetY()) ==true)
-		{if(FixegetPickable(HerogetX()-1, HerogetY()) == true)
+		if(ElementFixegetPenetrable(LoranngetX()-1, LoranngetY()) ==true)
+		{if(ElementFixegetRecuperable(LoranngetX()-1, LoranngetY()) == true)
 		{
-			ElementFixedisableSprite(HerogetX()-1, HerogetY());
+			ElementFixedisableSprite(LoranngetX()-1, LoranngetY());
 		}
-		HerosetX(-1);
+		LorannsetX(-1);
 		
-		try { img =ImageIO.read(new File("sprite/lorann_l.png"));
+		try { img =ImageIO.read(new File("sprite/lorann_LEFT.png"));
 		} catch (IOException e) {e.printStackTrace();}
-			HerosetImage(img);
+			LorannsetImage(img);
 		}
 	}	
 	public void MoveDown()
 	{
 		Image img = null;
-		if(FixegetPenetrable(HerogetX(), HerogetY()+1) ==true)
-		{if(FixegetPickable(HerogetX(), HerogetY()+1) == true)
+		if(ElementFixegetPenetrable(LoranngetX(), LoranngetY()+1) ==true)
+		{if(ElementFixegetRecuperable(LoranngetX(), LoranngetY()+1) == true)
 		{
-			FixedisableSprite(HerogetX(), HerogetY()+1);
+			ElementFixedisableSprite(LoranngetX(), LoranngetY()+1);
 		}
-		HerosetY(1);
+		LorannsetY(1);
 		
-		try { img =ImageIO.read(new File("sprite/lorann_b.png"));
+		try { img =ImageIO.read(new File("sprite/lorann_DOWN.png"));
 		} catch (IOException e) {e.printStackTrace();}
-			HerosetImage(img);
+			LorannsetImage(img);
 		}
 	}
 
-	public Image FixegetImage1(int x, int y) {
+	public Image HerogetImage() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean FixegetPickable1(int x, int y) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean FixegetPickable2(int x, int y) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public void FixedisableSprite1(int x, int y) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Image ElementFixegetImage(int x, int y) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean ElementFixegetPenetrable(int x, int y) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean ElementFixegetRecuperable(int x, int y) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public void ElementFixedisableSprite(int x, int y) {
+	public void LorannsetImage(Image img) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -369,3 +348,4 @@ public class Model extends Observable implements IModel {
 
 
 }
+
