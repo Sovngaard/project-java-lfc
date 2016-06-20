@@ -1,5 +1,11 @@
 package controller;
 
+import java.awt.Image;//libraires java
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
@@ -36,7 +42,7 @@ public class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Press key 'E', 'F', 'D','I' or 'M' to choose a level from 1 to 5");
+		this.view.printMessage("'HAUT', ' BAS', 'GAUCHE' ou 'DROITE', afin de bouger");
 	}
 
 	/**
@@ -65,25 +71,39 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
+		Image img = null;
 		switch (controllerOrder) {
-			case LEVEL1:
-				this.model.loadMessage("1");
-				break;
-			case LEVEL2:
-				this.model.loadMessage("2");
-				break;
-			case LEVEL3:
-				this.model.loadMessage("3");
-				break;
-			case LEVEL4:
-				this.model.loadMessage("4");
-				break;
-			case LEVEL5:
-				this.model.loadMessage("5");
-				break;
+		case Up:
+			this.model.MoveUp();//permet de bouger vers le haut
+			this.view.ReUpdate();//update sprite lorann
+			
+			break;//faire une pause en attendant l'instruction suivante
+		
+		case Down:
+			
+			this.model.MoveDown();//permet de bouger vers le bas
+			this.view.ReUpdate();//update sprite lorann
+			
+			break;
+		
+		case Right:
+			this.model.MoveRight();//permet de bouger vers la droite
+			this.view.ReUpdate();//update sprite lorann
+			break;
+		
+		case Left:
+			this.model.MoveLeft();//permet de bouger vers la gauche
+			this.view.ReUpdate();//update sprite lorann
+			
+			break;
+		
 
-			default:
-				break;
+		default:
+			try {img =ImageIO.read(new File("sprite/lorann_UP.png"));//lire le sprite de lorann
+			} catch (IOException e) {e.printStackTrace();}
+				this.model.HerosetImage(img);//initialise l'image de LORANN
+				this.view.ReUpdate();//update sprite lorann
+			break;
 		}
 	}
 
