@@ -23,11 +23,11 @@ public class Model extends Observable implements IModel {
 	private Lorann hero;
 	private char[] ch =null;
 	private int cpt = 0;
-	private Fixe[][] fixe = new Fixe[20][12];
+	private Fixe[][] fixe = new Fixe[20][12];//elements fixes sur la grille
 	private Image ima =null;
 	private int x;
 	private int y;
-	public static int level =1;
+	public static int level =1;//debut level 1
 
 	/**
 	 * Instantiates a new model.
@@ -36,7 +36,7 @@ public class Model extends Observable implements IModel {
 		this.message = "";
 		loadMessage(""+level);
 		initHero();
-		System.out.println("héro a été init");
+		System.out.println("héro a été init");//msg erreur
 		initFixe();
 		System.out.println("elements fixes OK");
 	}
@@ -59,7 +59,7 @@ public class Model extends Observable implements IModel {
 	private void setMessage(final String message) {
 		this.message = message;
 		this.setChanged();
-		this.notifyObservers();
+		this.notifyObservers();//utilisation observeurs
 	}
 
 	/*
@@ -93,20 +93,19 @@ public class Model extends Observable implements IModel {
 		
 	}
 
-	public void initHero()
+	public void initHero()//init lorann
 	{
 		try {
 			  image = ImageIO.read(new File("sprite/lorann_l.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		hero = new Lorann(1,1,image);		
 	}
 	public void initFixe()
 	{	
-		fixe = new Fixe[20][12];
-	System.out.println("element fixe reset");
+		fixe = new Fixe[20][12];//elements fixes
+	System.out.println("element fixe reset");//msg erreurs
 	 	ch =null;
 		System.out.println("obj init fixe");
 		cpt = 0;
@@ -127,7 +126,7 @@ public class Model extends Observable implements IModel {
 					image = ImageIO.read(new File("sprite/Sortilege.png"));					
 				 	} catch (IOException e) {e.printStackTrace();}		
 				 	fixe[x][y] = new Fixe(x,y,image, false, false, 25);
-				 	fixe[x][y].setPenetrableOFF();
+				 	fixe[x][y].setPenetrableOFF();//dit si un élément fixe peut etre penetré ou pas
 				 break;
 				 
 			 case 'X' :
@@ -199,7 +198,7 @@ public class Model extends Observable implements IModel {
 	
 	
 	
-	public int HerogetX()
+	public int HerogetX()//les coordonées du héros
 	{	int x = hero.getX();
 		return x;
 	}
@@ -250,7 +249,7 @@ public class Model extends Observable implements IModel {
 		{
 		case 1:
 			level++;
-			loadMessage(""+level);
+			loadMessage(""+level);//chargement du level
 			initFixe();
 		case 6:
 			for(y=0;y<=11;y++)
@@ -259,7 +258,7 @@ public class Model extends Observable implements IModel {
 				{
 					if (fixe[x][y].getid() == 1)
 					{
-						fixe[x][y].changeState();
+						fixe[x][y].changeState();//change etat
 					}
 				}
 			}
@@ -269,10 +268,10 @@ public class Model extends Observable implements IModel {
 	}
 	public void MoveUp()
 	{Image img = null;
-		if(ElementFixegetPenetrable(HerogetX(), HerogetY()-1) ==true)
-		{if(ElementFixegetRecuperable(HerogetX(), HerogetY()-1) == true)
+		if(FixegetPenetrable(HerogetX(), HerogetY()-1) ==true)
+		{if(FixegetPickable(HerogetX(), HerogetY()-1) == true)
 		{
-			ElementFixedisableSprite(HerogetX(), HerogetY()-1);
+			FixedisableSprite(HerogetX(), HerogetY()-1);
 		}
 		HerosetY(-1);
 		
@@ -284,8 +283,8 @@ public class Model extends Observable implements IModel {
 	public void MoveRight()
 	{
 		Image img = null;
-		if(ElementFixegetPenetrable(HerogetX()+1, HerogetY()) ==true)
-		{if(ElementFixegetRecuperable(HerogetX()+1, HerogetY()) == true)
+		if(FixegetPenetrable(HerogetX()+1, HerogetY()) ==true)
+		{if(FixegetPickable(HerogetX()+1, HerogetY()) == true)
 		{
 			ElementFixedisableSprite(HerogetX()+1, HerogetY());
 		}
@@ -299,8 +298,8 @@ public class Model extends Observable implements IModel {
 	public void MoveLeft()
 	{
 		Image img = null;
-		if(ElementFixegetPenetrable(HerogetX()-1, HerogetY()) ==true)
-		{if(ElementFixegetRecuperable(HerogetX()-1, HerogetY()) == true)
+		if(FixegetPenetrable(HerogetX()-1, HerogetY()) ==true)
+		{if(FixegetPickable(HerogetX()-1, HerogetY()) == true)
 		{
 			ElementFixedisableSprite(HerogetX()-1, HerogetY());
 		}
@@ -314,10 +313,10 @@ public class Model extends Observable implements IModel {
 	public void MoveDown()
 	{
 		Image img = null;
-		if(ElementFixegetPenetrable(HerogetX(), HerogetY()+1) ==true)
-		{if(ElementFixegetRecuperable(HerogetX(), HerogetY()+1) == true)
+		if(FixegetPenetrable(HerogetX(), HerogetY()+1) ==true)
+		{if(FixegetPickable(HerogetX(), HerogetY()+1) == true)
 		{
-			ElementFixedisableSprite(HerogetX(), HerogetY()+1);
+			FixedisableSprite(HerogetX(), HerogetY()+1);
 		}
 		HerosetY(1);
 		
@@ -327,22 +326,22 @@ public class Model extends Observable implements IModel {
 		}
 	}
 
-	public Image ElementFixegetImage(int x, int y) {
+	public Image FixegetImage1(int x, int y) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean ElementFixegetPenetrable(int x, int y) {
+	public boolean FixegetPickable1(int x, int y) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean ElementFixegetRecuperable(int x, int y) {
+	public boolean FixegetPickable2(int x, int y) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public void ElementFixedisableSprite(int x, int y) {
+	public void FixedisableSprite1(int x, int y) {
 		// TODO Auto-generated method stub
 		
 	}

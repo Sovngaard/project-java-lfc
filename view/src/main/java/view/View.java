@@ -39,29 +39,27 @@ public class View implements IView, Runnable {
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
-			case KeyEvent.VK_A:
-				return ControllerOrder.LEVEL1;
-			case KeyEvent.VK_B:
-				return ControllerOrder.LEVEL2;
-			case KeyEvent.VK_C:
-				return ControllerOrder.LEVEL3;
-			case KeyEvent.VK_D:
-				return ControllerOrder.LEVEL4;
-			case KeyEvent.VK_E:
-				return ControllerOrder.LEVEL5;
+			case KeyEvent.VK_UP:
+				return ControllerOrder.Up;
+			case KeyEvent.VK_DOWN:
+				return ControllerOrder.Down;
+			case KeyEvent.VK_LEFT:
+				return ControllerOrder.Left;
+			case KeyEvent.VK_RIGHT:
+				return ControllerOrder.Right;
 			default:
-				return ControllerOrder.LEVEL1;
+				return ControllerOrder.Down;
 		}
 	}
 
 	/*
-	 * (non-Javadoc) edr
+	 * (non-Javadoc)
 	 *
 	 * @see contract.IView#printMessage(java.lang.String)
 	 */
-	//public void printMessage(final String message) {
-		//this.viewFrame.printMessage(message);
-	//}
+	public void printMessage(final String message) {
+		this.viewFrame.printMessage(message);
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -80,10 +78,14 @@ public class View implements IView, Runnable {
 	 */
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
-	}
 
-	public void printMessage(String message) {
-		// TODO Auto-generated method stub
-		
+	
 	}
+	
+	public void ReUpdate()
+	{
+		this.viewFrame.getContentPane().repaint();
+	}
+	
 }
+
