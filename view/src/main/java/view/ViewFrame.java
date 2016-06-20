@@ -127,15 +127,13 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *          the model
 	 */
 	private void buildViewFrame(final IModel model) {
-		this.setTitle("Lorann on JAVA");
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(1360 + this.getInsets().left + this.getInsets().right, 860+ this.getInsets().top + this.getInsets().bottom);
+		this.setSize(1280 + this.getInsets().left + this.getInsets().right, 800 + this.getInsets().top + this.getInsets().bottom);
 		this.setLocationRelativeTo(null);
-		
 	}
 
 	/**
@@ -164,6 +162,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	public void keyPressed(final KeyEvent e) {
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+		this.getContentPane().repaint(0, 0, this.getWidth(), this.getHeight());
 	}
 
 	/*
@@ -172,6 +171,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(final KeyEvent e) {
-
+		this.getContentPane().repaint(0, 0, this.getWidth(), this.getHeight());
 	}
 }
+
