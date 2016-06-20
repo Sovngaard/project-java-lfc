@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+//extend model.Model;
 
 
 /**
@@ -76,7 +77,7 @@ class ViewPanel extends JPanel implements Observer {
 		graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
 		graphics.setColor(Color.red);
 		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
-		String message = "11111111111111111111111111B!B!!!!!!!!!B1111B!!B1-111111111BB111-1111-1111111111-B!!B1111-11P1111111--1P1B!!!B!!!!!!B111B-P11P1111111P1111X1C-1P1B!!!B!!!!!!B111BB!!B1111-11P1111111-111-1111-1111111111-111B!!B1-111111111BB111111B!B!!!!!!!!!B111111111111111111111";
+		String message = "11111111111111111111111111B!B!!!!!!!!!B1111B!!B1-111111111BB111-1111-1111111111-B!!B1111-11P1111111--1P1B!!!B!!!!!!B111B-P11P1111111S1111X1C-1P1B!!!B!!!!!!B111BB!!B1111-11P1111111-111-1111-1111111111-111B!!B1-111111111BB111111B!B!!!!!!!!!B111111111111111111111";
 		char ch[] = message.toCharArray();
 		
 		
