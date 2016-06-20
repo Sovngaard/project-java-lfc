@@ -32,8 +32,24 @@ public interface IModel {//
 	 * @return the observable
 	 */
 	Observable getObservable();
-	Image pik(int cpt) throws IOException;
+	//Image pik(int cpt) throws IOException;
 
+	void cpt(int i);
+
+	int HerogetX();
+	int HerogetY();
+	Image HerogetImage();
+	void HerosetX(int x);
+	void HerosetY(int y);
+	void HerosetImage(Image img);
+	Image ElementFixegetImage(int x, int y);
+	boolean ElementFixegetPenetrable(int x,int y);
+	boolean ElementFixegetRecuperable(int x,int y);
+	void ElementFixedisableSprite(int x,int y);
+	void MoveRight();
+	void MoveLeft();
+	void MoveUp();
+	void MoveDown();
 	
 
 }
