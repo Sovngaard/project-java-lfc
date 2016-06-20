@@ -84,7 +84,7 @@ public class Model extends Observable implements IModel {
 			img = ImageIO.read(new File("sprite/Background.png"));
 			break;
 		case 'B' :
-			img = ImageIO.read(new File("sprite/crystal_ball.png"));
+			img = ImageIO.read(new File("sprite/bone.png"));
 			break;
 		case '!' :
 			img = ImageIO.read(new File("sprite/horizontal_bone.png"));
@@ -97,6 +97,9 @@ public class Model extends Observable implements IModel {
 			break;
 		case 'C' :
 			img = ImageIO.read(new File("sprite/gate_closed.png"));
+			break;
+		case 'S' :
+			img = ImageIO.read(new File("sprite/Crystal_ball.png	"));
 			break;
 		default :
 			img = ImageIO.read(new File("sprite/lorann_l.png"));

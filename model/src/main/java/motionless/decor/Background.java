@@ -8,7 +8,7 @@ import ele.element.Permeability;
 class Background extends MotionlessElement {
 
 	public Background(Sprite sprite, Permeability permeability, int i) {
-		super(new Sprite("horizontal_bone.jpg"), Permeability.BLOCKING, '!');
+		super(new Sprite("horizontal_bone.png"), Permeability.BLOCKING, '!');
 		// TODO Auto-generated constructor stub
 	}
 
