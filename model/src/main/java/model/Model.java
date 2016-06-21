@@ -152,7 +152,7 @@ public class Model extends Observable implements IModel {
 				 try{
 				 	image = ImageIO.read(new File("sprite/horizontal_bone.png"));					
 					} catch (IOException e) {e.printStackTrace();}				
-					elementfixe[x][y] = new ElementFixe(x,y,image, false, false, 3);		
+					elementfixe[x][y] = new ElementFixe(x,y,image, false,false, 3);		
 					
 				 break;
 				 
@@ -178,9 +178,25 @@ public class Model extends Observable implements IModel {
 			 case'P':
 				
 				 try{
+					 	image = ImageIO.read(new File("sprite/purse.png"));					
+						} catch (IOException e) {e.printStackTrace();}				
+						elementfixe[x][y] = new ElementFixe(x,y,image,true,true,7);
+						
+						break;
+			 case'S':
+					
+				 try{
 					 	image = ImageIO.read(new File("sprite/crystal_ball.png"));					
 						} catch (IOException e) {e.printStackTrace();}				
 						elementfixe[x][y] = new ElementFixe(x,y,image,true,true,6);
+						
+						break;
+			 case'B':
+					
+				 try{
+					 	image = ImageIO.read(new File("sprite/bone.png"));					
+						} catch (IOException e) {e.printStackTrace();}				
+						elementfixe[x][y] = new ElementFixe(x,y,image,false,false,6);
 						
 						break;
 			 case'X': 
