@@ -174,7 +174,7 @@ public class Model extends Observable implements IModel {
 					} catch (IOException e) {e.printStackTrace();}				
 					elementfixe[x][y] = new ElementFixe(x,y,image,true,false,5);
 					
-				 break;
+				 break;//
 			 case'P':
 				
 				 try{
