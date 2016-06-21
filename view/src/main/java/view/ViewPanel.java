@@ -29,9 +29,9 @@ class ViewPanel extends JPanel implements Observer {
 	 *          the view frame
 	 */
 	public ViewPanel(final ViewFrame viewFrame) {
+		Thread anime = new Thread(new animLorann());
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
-		Thread anime = new Thread(new animLorann());
 		anime.start();
 	}
 
@@ -72,7 +72,6 @@ class ViewPanel extends JPanel implements Observer {
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 		graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
-		//graphics.drawImage(this.getViewFrame().getModel().HerogetImage(), this.getViewFrame().getModel().HerogetX()*64, this.getViewFrame().getModel().HerogetY()*64, 64, 64, viewFrame);
 	
 	for(int y=0 ; y<12 ; y++)
 	{
@@ -91,12 +90,14 @@ class ViewPanel extends JPanel implements Observer {
 		   while(true){
 		    switch(n%8){
 		    case 0:
+		    	//System.out.println("test 0");
 		     try {
 		      img = ImageIO.read(new File("sprite/lorann_bl.png"));
 		     } catch (IOException e1) {e1.printStackTrace();}
 		     getViewFrame().getModel().LorannsetImage(img);
 		     break;
 		    case 1:
+		    	//System.out.println("test 1");
 		     try {
 		      img = ImageIO.read(new File("sprite/lorann_b.png"));
 		     } catch (IOException e1) {e1.printStackTrace();}
@@ -147,11 +148,13 @@ class ViewPanel extends JPanel implements Observer {
 		    
 		    }
 		    n++;
+		    //System.out.println("test 2");
 		    try {
 		     Thread.sleep(100);
 		    } catch (InterruptedException e) {
 		     e.printStackTrace();
 		    }
+		    //System.out.println("test 3");
 		    repaint(0,0,getWidth(),getHeight());
 		   }
 		  }

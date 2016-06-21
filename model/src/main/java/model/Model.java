@@ -233,7 +233,7 @@ public class Model extends Observable implements IModel {
 		lorann.setY(i);
 		
 	}
-	public void LorannetImage(Image img)
+	public void LorannsetImage(Image img)
 	{
 		lorann.setImg(img);
 	}
@@ -343,10 +343,7 @@ public class Model extends Observable implements IModel {
 		return null;
 	}
 
-	public void LorannsetImage(Image img) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 
 
