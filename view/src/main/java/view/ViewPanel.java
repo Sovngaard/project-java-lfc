@@ -1,8 +1,13 @@
 package view;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -26,6 +31,8 @@ class ViewPanel extends JPanel implements Observer {
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
+		Thread anime = new Thread(new animLorann());
+		anime.start();
 	}
 
 	/**
@@ -75,5 +82,79 @@ class ViewPanel extends JPanel implements Observer {
 		}
 	}
 	graphics.drawImage(this.getViewFrame().getModel().LoranngetImage(), this.getViewFrame().getModel().LoranngetX()*64, this.getViewFrame().getModel().LoranngetY()*64, 64, 64, viewFrame);
-	} 
+	}
+	class animLorann implements Runnable{
+
+		  public void run() {
+		   int n=0;
+		   Image img = null; 
+		   while(true){
+		    switch(n%8){
+		    case 0:
+		     try {
+		      img = ImageIO.read(new File("sprite/lorann_bl.png"));
+		     } catch (IOException e1) {e1.printStackTrace();}
+		     getViewFrame().getModel().LorannsetImage(img);
+		     break;
+		    case 1:
+		     try {
+		      img = ImageIO.read(new File("sprite/lorann_b.png"));
+		     } catch (IOException e1) {e1.printStackTrace();}
+		     getViewFrame().getModel().LorannsetImage(img);
+		     break;
+		     
+		    case 2 : 
+		     try {
+		      img = ImageIO.read(new File("sprite/lorann_br.png"));
+		     } catch (IOException e1) {e1.printStackTrace();}
+		     getViewFrame().getModel().LorannsetImage(img);
+		     break;
+		     
+		    case 3 : 
+		     try {
+		      img = ImageIO.read(new File("sprite/lorann_r.png"));
+		     } catch (IOException e1) {e1.printStackTrace();}
+		     getViewFrame().getModel().LorannsetImage(img);
+		     break;
+		    
+		    case 4 :
+		     try {
+		      img = ImageIO.read(new File("sprite/lorann_ur.png"));
+		     } catch (IOException e1) {e1.printStackTrace();}
+		     getViewFrame().getModel().LorannsetImage(img);
+		     break;
+		     
+		    case 5 : 
+		     try {
+		      img = ImageIO.read(new File("sprite/lorann_u.png"));
+		     } catch (IOException e1) {e1.printStackTrace();}
+		     getViewFrame().getModel().LorannsetImage(img);
+		     break;
+		     
+		    case 6:
+		     try {
+		      img = ImageIO.read(new File("sprite/lorann_ul.png"));
+		     } catch (IOException e1) {e1.printStackTrace();}
+		     getViewFrame().getModel().LorannsetImage(img);
+		     break;
+		     
+		    case 7 :
+		     try {
+		      img = ImageIO.read(new File("sprite/lorann_l.png"));
+		     } catch (IOException e1) {e1.printStackTrace();}
+		     getViewFrame().getModel().LorannsetImage(img);
+		     break;
+		    
+		    }
+		    n++;
+		    try {
+		     Thread.sleep(100);
+		    } catch (InterruptedException e) {
+		     e.printStackTrace();
+		    }
+		    repaint(0,0,getWidth(),getHeight());
+		   }
+		  }
+		  
+		 }
 }

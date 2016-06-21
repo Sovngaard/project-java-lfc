@@ -195,9 +195,9 @@ public class Model extends Observable implements IModel {
 						
 					 break;		 
 			 		}cpt++;
-			 
-	 }
-	 }
+		//System.out.println("y OK");	 
+	 }//System.out.println("x OK");
+	 }System.out.println("init fixe OKKKKKKKKKK");
 }
 	
 		 
@@ -287,7 +287,7 @@ public class Model extends Observable implements IModel {
 		}
 		LorannsetY(-1);
 		
-		try { img =ImageIO.read(new File("sprite/lorann_UP.png"));
+		try { img =ImageIO.read(new File("sprite/lorann_u.png"));
 		} catch (IOException e) {e.printStackTrace();}
 			LorannsetImage(img);
 		}
@@ -302,7 +302,7 @@ public class Model extends Observable implements IModel {
 		}
 		LorannsetX(1);
 		
-		try { img =ImageIO.read(new File("sprite/lorann_RIGHT.png"));
+		try { img =ImageIO.read(new File("sprite/lorann_r.png"));
 		} catch (IOException e) {e.printStackTrace();}
 			LorannsetImage(img);
 		}
@@ -317,7 +317,7 @@ public class Model extends Observable implements IModel {
 		}
 		LorannsetX(-1);
 		
-		try { img =ImageIO.read(new File("sprite/lorann_LEFT.png"));
+		try { img =ImageIO.read(new File("sprite/lorann_l.png"));
 		} catch (IOException e) {e.printStackTrace();}
 			LorannsetImage(img);
 		}
@@ -332,7 +332,7 @@ public class Model extends Observable implements IModel {
 		}
 		LorannsetY(1);
 		
-		try { img =ImageIO.read(new File("sprite/lorann_DOWN.png"));
+		try { img =ImageIO.read(new File("sprite/lorann_b.png"));
 		} catch (IOException e) {e.printStackTrace();}
 			LorannsetImage(img);
 		}

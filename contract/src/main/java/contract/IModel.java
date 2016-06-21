@@ -38,7 +38,7 @@ public interface IModel {//
 
 	int LoranngetX();
 	int LoranngetY();
-	Image HerogetImage();
+	//Image HerogetImage();
 	void LorannsetX(int x);
 	void LorannsetY(int y);
 	void LorannsetImage(Image img);
